@@ -1,4 +1,4 @@
-import React, { Component , Fragment} from 'react';
+import React, { Component} from 'react';
 import { connect } from 'react-redux'
 import { BrowserRouter as Router, Route} from 'react-router-dom'
 import { handleInitialData } from '../actions/shared'
@@ -11,6 +11,7 @@ import NewQuestion from './NewQuestion'
 import QuestionPage from './QuestionPage';
 import QuestionResult from './QuestionResults'
 import LoadingBar from 'react-redux-loading'
+import Questions from './Questions';
 
 
 class App extends Component {
@@ -36,7 +37,7 @@ class App extends Component {
         <Route path='/new' component={NewQuestion}/> 
         <Route path='/question/:id' component={QuestionPage}/>
         <Route path='/dashboard' component={DashBoard}/>
-        <Route path='/result' component={QuestionResult}/>
+        <Route path='/result/:id' component={QuestionResult}/>
        </div>
       </div>
       </div>)

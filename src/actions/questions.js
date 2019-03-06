@@ -1,6 +1,7 @@
 import { _saveQuestion, _saveQuestionAnswer} from '../API/_DATA'
-//import { showLoading, hideLoading} from 'react-redux-loading'
-
+import { showLoading, hideLoading} from 'react-redux-loading'
+import { addAnswerUsers, addQuestionUsers } from './users'
+// import { saveQuestion } from './shared'
 
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
@@ -24,50 +25,48 @@ export function addQuestion(question){
   }
 }
 
-export function addAnswer({authedUser, qid, answers}) {
+ function addAnswer({authedUser, qid, answer}) {
   return{
     type: ADD_ANSWER,
     authedUser,
     qid,
-    answers
-  }
-}
-
-
-function receiveAnswers({authedUser,id,  answer}){
-  return {
-    type: RECEIVE_ANSWERS,
-    authedUser,
-    id,
     answer
   }
 }
 
-export function handleSaveQuestion (question) {
+export function handleSaveQuestion (optionOne, optionTwo) {
 
   return (dispatch, getState) => {
 
-    const { authedUser, questions } = getState()
-    const {optionOneText, optionTwoText} = question
-    // dispatch(addQuestion(question))
-    //  dispatch(showLoading())
-    return _saveQuestion(
-      question,
+    const { authedUser } = getState()
+    
+    dispatch(showLoading());
+    return _saveQuestion({
+      optionOne,
+      optionTwo,
       authedUser
-   ).then((question) => dispatch(addQuestion(question)))
-    // .then(() => dispatch(hideLoading()))
+    }).then((question) => {
+      dispatch(addQuestion(question))
+      dispatch(addQuestionUsers(question))
+    }).then(()=>  dispatch(hideLoading()))
+   
+
   }
 }
 
-export function handleSaveQuestionAnswer(authedUser, qid, answer){
-  return(dispatch, getState)=> {
-    // const { authedUser } = getState();
+export function handleSaveQuestionAnswer(qid, answer){
 
+  return(dispatch, getState) => {
+    const { authedUser} = getState()
+
+    dispatch(showLoading());
     return _saveQuestionAnswer({
-     authedUser,
-     qid,
-     answer
+      authedUser,
+      qid,
+      answer
     })
-    .then((questionAnswer) => dispatch(receiveAnswers(questionAnswer)))
+    .then(() => dispatch(addAnswer({authedUser,qid,answer})))
+    .then(() =>   dispatch(addAnswerUsers({authedUser,qid,answer})))
+    .then(() => dispatch(hideLoading()))
   }
 }

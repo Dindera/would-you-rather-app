@@ -35,7 +35,6 @@ export function formatQuestion (question, author,) {
   const user = Object.values(users)
   const userr = user.filter((val) => val['id'] === authedUser)
   
-    // console.log('Answers,' , userr)
     
   for (let index = 0; index < userr.length; index++) {
     let element = userr[index].answers;

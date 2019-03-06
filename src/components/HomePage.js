@@ -31,7 +31,7 @@ class HomePage extends Component{
   render() {
     const { isAnswered } = this.state
 
-    const { questionIds, userId, authedUser} = this.props
+    const { questionIds, userId} = this.props
       return(
         <div className='card-home'>
           <div className='card-home-head'>
@@ -57,7 +57,6 @@ class HomePage extends Component{
           </div>
           <div>
           {isAnswered === true ? userId.map((i) => <Questions key={i} id={i}/>)  :  questionIds.map((i) => <Questions key={i} id={i}/>) }</div>
-          {/* {isAnswered === true ? questionIds.map((id) => <Questions id={id}/>)  :  questionIds.map((id) => <Questions id={id}/>)} */}
          </div>
       )
   }

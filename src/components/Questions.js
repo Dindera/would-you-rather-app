@@ -9,14 +9,14 @@ class Questions extends Component {
 
     render() {
 
-        const { question} = this.props
+        const { question } = this.props
 
         if(question === null ) {
             return <p> This question doesn't exist</p>
         }
          
         const { 
-            name, avatar,id, optionOne, timestamp, answers
+            name, avatar,id, optionOne, timestamp,
         } = question
 
 

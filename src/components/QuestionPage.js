@@ -7,49 +7,55 @@ import { handleSaveQuestionAnswer } from '../actions/questions';
 
 class QuestionPage extends Component {
 
+state = {
+    checkedOption : '',
+}
+
+handleChange = (e) => {
+const val = e.target.value
+ 
+    this.setState(() => ({
+        checkedOption: val
+    }))
+}
+
 
     handleVote = (e) => {
         e.preventDefault()
 
-        const { dispatch, question, authedUser} = this.props
+        const { dispatch, question} = this.props
 
-        const answers = question.answers
         const qid = question.id
-        // const answer = e.target.value
-        console.log('Anss', answers, e.target.value, qid)
 
-        dispatch(handleSaveQuestionAnswer({
-            authedUser,
-            id: qid,
-            
-        }))
-
+        dispatch(handleSaveQuestionAnswer(qid, this.state.checkedOption))
+    
+    
     }
       
 
     render() {
-
+        const { checkedOption } = this.state
         const {  id, question } = this.props
+         
 
         if(question === null) {
             return <p> This question doesn't exist</p>
         }
 
         const { 
-            name, avatar, optionOne, optionTwo
+            name, avatar, optionOne, optionTwo,
         } = question
 
        
         return (
             <div  style={{display: 'flex', justifyContent: 'space-between', maxWidth: '100%'}}>
 
-               <Link to='/'>
+               <Link to={`/result/${id}`}>
                <MdClose className='back-arrow'/>
                </Link>
             <div className='card-question-page'>
             <ul>
              <li key={id}>
-           
             <h4 className='h4'>{name} asks:</h4>
             <div className='card-question-body'>
             <div className="card-question-block1">
@@ -61,31 +67,31 @@ class QuestionPage extends Component {
             <input 
             type='radio'
             name='options'
+            onChange={this.handleChange}
             value='optionOne'
-            id='optionOne'
+            checked={checkedOption === 'optionOne'}
             />
-            
             <label htmlFor='optionOne'>{optionOne.text}</label>        
             <br/>
-            {/* <span><i>{optionOne.votes.length}</i></span> */}
+            <span><i>{optionOne.votes.length}</i></span>
             <br/>
-            {/* <h4 >OR</h4> */}
             <input 
             type='radio'
             name='options'
+            onChange={this.handleChange}
             value='optionTwo'
-            id='optionTwo'
+            checked={checkedOption === 'optionTwo'}
             />
             <label htmlFor='optionTwo'>{optionTwo.text}</label>
             <br/>
-            {/* <span><i>{optionTwo.votes.length}</i></span> */}
+            <span><i>{optionTwo.votes.length}</i></span>
             <br/>
-            <Link to='/result'>
+      
             <button 
-            type='submit'
-               className='question-button'               
-               >Submit</button>
-            </Link>
+             type='submit'
+             className='question-button'               
+             >Submit</button>
+
             </form>
             </div>
            </div>
@@ -102,14 +108,17 @@ class QuestionPage extends Component {
 function mapStateToProps({authedUser, questions, users},props){
     const {id} = props.match.params
 
+    const user = Object.keys(users)
+
     const  question  = questions[id]
 
-    console.log('questions', questions, question,)
+ 
     return {
         id,  
         question: !questions[id] ? null :
         formatQuestion(question, users[question.author], authedUser),
-        questions
+        questions,
+        user
         
     }
 }

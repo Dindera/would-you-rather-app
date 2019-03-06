@@ -4,6 +4,7 @@ import { handleSaveQuestion } from '../actions/questions'
 import { Redirect } from 'react-router-dom'
 
 
+
 class NewQuestion extends Component {
 
     state = {
@@ -15,16 +16,13 @@ class NewQuestion extends Component {
     handleChange = e => {
         const options = e.target.value
 
-        console.log('Option1', options)
-
-        this.setState(() => ({
+        this.setState({
           optionOneText: options,
-        }))
+        })
     }
 
     handleChange2 = e => {
         const options = e.target.value 
-        console.log('Option2', options)
 
         this.setState(() => ({
           optionTwoText: options,
@@ -39,23 +37,24 @@ class NewQuestion extends Component {
 
         const { optionOneText, optionTwoText } = this.state;
       
-        const { dispatch , id } = this.props
+        const { dispatch , authedUser} = this.props
 
-        dispatch(handleSaveQuestion(optionOneText, optionTwoText, id))
+        const author = authedUser
+        dispatch(handleSaveQuestion({optionOneText, optionTwoText, author}))
 
         this.setState(() => ({
           optionOne: '',
           optionTwo: '',
-        //   toHome: id ? false : true,
+          toHome: true,
         }))
 
     }
         render(){
             const { optionOneText, optionTwoText, toHome } = this.state
             
-            // if(toHome === true){
-            //     return <Redirect to='/'/> 
-            // }
+            if(toHome === true){
+                return <Redirect to='/'/> 
+            }
 
         return (
             <div>
@@ -87,4 +86,12 @@ class NewQuestion extends Component {
     }
 }
 
-export default connect()(NewQuestion)
+function mapStateToProps({questions, users}){
+
+    return{
+        questions,
+        users
+    }
+}
+
+export default connect(mapStateToProps)(NewQuestion)

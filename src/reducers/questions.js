@@ -8,51 +8,27 @@ export default function questions(state = {}, action) {
             ...action.questions
         }
         case ADD_QUESTION :
-        
-        const { question } = action
 
-        let questions = {}
-
-        // let optionOne, optionTwo = {}
-        //    if(question.optionOne !== null || question.optionTwo !== null){
-        //        optionOne = {
-        //            [question.optionOne] : {
-        //                ...state[question.optionOne],
-        //                votes: state[question.optionOne].votes.concat(question.id)
-        //            }
-        //        }
-        //    }
-         
         return {
             ...state,
             [action.question.id]: action.question,
-            // questions: [action.authedUser].questions.concat([action.question.id])
         }
+
         case ADD_ANSWER :
-        //   const { users, questions } = action
 
-           return{
+           return  {
                ...state,
-       
-                [action.authedUser]: {
-                   ...state[action.authedUser],
-                   answers: {
-                       ...state[action.authedUser].answers,
-                       [action.qid]: action.answer
-                   }
-                },   
-        //         ...questions,    
-
-               [action.qid]: {
-
-                   ...state[action.qid],
-                 [action.answers]: {
-                   ...state[action.qid][action.answers],
-                   votes: state[action.qid][action.answers].votes.concat([action.authedUser])
-                 } 
-               }
+                [action.qid]: {
+                    ...state[action.qid],
+                    [action.answer]: {
+                        ...state[action.qid][action.answer],
+                        votes: state[action.qid][action.answer].votes.includes(action.authedUser) === false
+                             ? state[action.qid][action.answer].votes.concat([action.authedUser])
+                             : state[action.qid][action.answer].votes.filter(id => id !== action.authedUser),
+                             
+                    }
+                }
            }
-
 
         default :
         return state

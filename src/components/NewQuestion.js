@@ -15,20 +15,17 @@ class NewQuestion extends Component {
 
     handleChange = e => {
         const options = e.target.value
-
+        
+      if(e.target.name === 'optionOneText'){
         this.setState({
-          optionOneText: options,
-        })
+            optionOneText: options,
+          })
+      }else if(e.target.name === 'optionTwoText'){
+        this.setState({
+            optionTwoText: options,
+          })
+      }
     }
-
-    handleChange2 = e => {
-        const options = e.target.value 
-
-        this.setState(() => ({
-          optionTwoText: options,
-        }))
-    }
-
 
 
 
@@ -66,17 +63,18 @@ class NewQuestion extends Component {
              <input type='text' placeholder='Enter Option One'
              value={optionOneText}
              onChange={this.handleChange}
-            
+            name='optionOneText'
              />
   
              <h4 className='Or'>OR</h4>
              <input type='text' placeholder='Enter Option Two'
              value={optionTwoText}
-             onChange={this.handleChange2}
-     
+             onChange={this.handleChange}
+             name='optionTwoText'
              />
              <br/>
              <button type='submit'
+             onClick={this.handleSubmit}
              disabled={optionOneText === '' || optionTwoText === ''}
              >
              Submit</button>

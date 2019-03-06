@@ -13,6 +13,10 @@ class Nav extends Component {
        dispatch(userLogin(null))
 
    }
+
+   handleClick = () => {
+       return alert('Please Login!')
+   }
     
 
     render() {
@@ -39,17 +43,17 @@ class Nav extends Component {
                     {authedUser === null ?
                         <ul className='nav-ul'>
                             <li className='nav-li'>                     
-                            <NavLink to='/' exact activeClassName='active'>
+                            <NavLink to='/' exact activeClassName='active' onClick={this.handleClick}>
                                Home
                               </NavLink>
                             </li>
                              <li className='nav-li'>
-                              <NavLink to='/' activeClassName='active'>
+                              <NavLink to='/' activeClassName='active' onClick={this.handleClick}>
                                   New Question
                               </NavLink>
                             </li>
                             <li className='nav-li'>
-                            <NavLink to='/' activeClassName='active'>
+                            <NavLink to='/' activeClassName='active' onClick={this.handleClick}>
                                Leader Board
                               </NavLink>
                               </li>  
@@ -62,7 +66,7 @@ class Nav extends Component {
                               </NavLink>
                             </li>
                           <li className='nav-li'>
-                        <NavLink to='/new' activeClassName='active'>
+                        <NavLink to='/add' activeClassName='active'>
                             New Question
                         </NavLink>
                       </li>

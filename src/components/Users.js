@@ -54,17 +54,6 @@ class Users extends Component {
 
 function mapStateToProps({authedUser, users}, {id}){
     const user = users[id]
-    
-//     const order = {}
-
-//     Object.keys(user).sort().forEach((key) => {
-//         order[key] = users[key]
-//     })
-
-//    const answer = Object.keys(user.answers).length + user.questions.length
-
-   
-// console.log('appTStateProps', user, user.questions.length, authedUser )
 
    return {
        authedUser,

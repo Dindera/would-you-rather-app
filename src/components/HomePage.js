@@ -32,6 +32,7 @@ class HomePage extends Component{
     const { isAnswered } = this.state
 
     const { questionIds, userId} = this.props
+
       return(
         <div className='card-home'>
           <div className='card-home-head'>
@@ -86,12 +87,8 @@ function mapStateToProps({questions, users,  authedUser}, {id}){
   
   
   return {
-    authedUser,
     userId: answered,
     questionIds : unanswered,
-    questions,
-    id
- 
   }
 
 }

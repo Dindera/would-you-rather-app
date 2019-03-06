@@ -34,10 +34,9 @@ class NewQuestion extends Component {
 
         const { optionOneText, optionTwoText } = this.state;
       
-        const { dispatch , authedUser} = this.props
+        const { dispatch } = this.props
 
-        const author = authedUser
-        dispatch(handleSaveQuestion({optionOneText, optionTwoText, author}))
+        dispatch(handleSaveQuestion(optionOneText, optionTwoText))
 
         this.setState(() => ({
           optionOne: '',
@@ -84,12 +83,6 @@ class NewQuestion extends Component {
     }
 }
 
-function mapStateToProps({questions, users}){
 
-    return{
-        questions,
-        users
-    }
-}
 
-export default connect(mapStateToProps)(NewQuestion)
+export default connect()(NewQuestion)

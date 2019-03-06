@@ -9,9 +9,9 @@ import Nav from './Nav';
 import HomePage from './HomePage';
 import NewQuestion from './NewQuestion'
 import QuestionPage from './QuestionPage';
-import QuestionResult from './QuestionResults'
+// import QuestionResult from './QuestionResults'
 import LoadingBar from 'react-redux-loading'
-import Questions from './Questions';
+
 
 
 class App extends Component {
@@ -23,7 +23,7 @@ class App extends Component {
 
   render() {
     return (
-      // <Fragment>
+  
      <Router>    
        <div>
       <LoadingBar style={{backgroundColor: 'indigo'}}/>
@@ -37,7 +37,7 @@ class App extends Component {
         <Route path='/add' component={NewQuestion}/> 
         <Route path='/question/:id' component={QuestionPage}/>
         <Route path='/dashboard' component={DashBoard}/>
-        <Route path='/result/:id' component={QuestionResult}/>
+       
        </div>
       </div>
       </div>)
@@ -52,7 +52,7 @@ class App extends Component {
         }
         </div>
       </Router>
-      // </Fragment>
+
  
     );
   }

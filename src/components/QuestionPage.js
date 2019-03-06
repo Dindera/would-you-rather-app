@@ -50,7 +50,7 @@ const val = e.target.value
         return (
             <div  style={{display: 'flex', justifyContent: 'space-between', maxWidth: '100%'}}>
 
-               <Link to={`/result/${id}`}>
+               <Link to={`/`}>
                <MdClose className='back-arrow'/>
                </Link>
             <div className='card-question-page'>
@@ -115,7 +115,7 @@ function mapStateToProps({authedUser, questions, users},props){
  
     return {
         id,  
-        question: !questions[id] ? null :
+        question: !questions[id] ? [] :
         formatQuestion(question, users[question.author], authedUser),
         questions,
         user

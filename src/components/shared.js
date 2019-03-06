@@ -1,15 +1,16 @@
 
 
 
-export function formatQuestion (question, author,) {
+export function formatQuestion (question, author) {
     const { id, timestamp } = question
     const { name, avatarURL, answers } = author
   
 
     return {
       id,
-      name,
       answers,
+      name,
+      author,
       timestamp,
       optionOne: {
         votes: question.optionOne.votes,

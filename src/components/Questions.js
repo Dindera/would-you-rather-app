@@ -55,6 +55,7 @@ function mapStateToProps({authedUser, users, questions},{id}){
     const question = questions[id]
     const user= users[id]
     
+
     return {
         authedUser,
         user,

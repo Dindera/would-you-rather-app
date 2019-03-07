@@ -5,20 +5,16 @@ class Users extends Component {
 
     render () {
 
-        const { user} = this.props
+    const { user} = this.props
        
 
         
-        const {name, answers, questions, avatarURL } = user
+    const {name, answers, questions, avatarURL } = user
         
-    //    const scoreArray = [] 
+
 
     const score = new Array([Object.keys(answers).length + questions.length])
         
-    //    scoreArray.concat(score)
-    //   console.log('The Props', scoreArray)
-        
-
         
 
        return(

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Questions from './Questions';
+import AnsweredQuestion from './AnsweredQuestion'
 import {userID } from './shared'
 
 
@@ -57,7 +58,7 @@ class HomePage extends Component{
            
           </div>
           <div>
-          {isAnswered === true ? userId.map((i) => <Questions key={i} id={i}/>)  :  questionIds.map((i) => <Questions key={i} id={i}/>) }</div>
+          {isAnswered === true ? userId.map((i) => <AnsweredQuestion key={i} id={i}/>)  :  questionIds.map((i) => <Questions key={i} id={i}/>) }</div>
          </div>
       )
   }

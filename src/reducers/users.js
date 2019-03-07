@@ -23,7 +23,6 @@ export default function users(state = {}, action) {
 
         case ADD_QUESTION_USERS : 
         const authedUser = action.question.author
-        // const { questions } = this.props
         return {
             ...state,
             [authedUser]: {

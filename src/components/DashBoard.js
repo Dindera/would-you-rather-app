@@ -12,7 +12,6 @@ class DashBoard extends Component {
         const { userIds} = this.props
        return(
            <div>
-               {/* <h2>Dash Board</h2> */}
                <ul>
                {userIds.map((user) => (
                <li key={user}>

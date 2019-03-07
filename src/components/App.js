@@ -9,7 +9,7 @@ import Nav from './Nav';
 import HomePage from './HomePage';
 import NewQuestion from './NewQuestion'
 import QuestionPage from './QuestionPage';
-// import QuestionResult from './QuestionResults'
+import QuestionResult from './QuestionResults'
 import LoadingBar from 'react-redux-loading'
 
 
@@ -35,9 +35,9 @@ class App extends Component {
         <div>
         <Route path='/' exact component={HomePage}/>
         <Route path='/add' component={NewQuestion}/> 
-        <Route path='/question/:id' component={QuestionPage}/>
-        <Route path='/dashboard' component={DashBoard}/>
-       
+        <Route path='/questions/:id' component={QuestionPage}/>
+        <Route path='/results/:id' component={QuestionResult}/>
+        <Route path='/leaderboard' component={DashBoard}/>     
        </div>
       </div>
       </div>)
@@ -60,8 +60,7 @@ class App extends Component {
 
 function mapStateToProps ({ authedUser }) {
   return {
-    userLoggedIn : authedUser === null,
-    
+    userLoggedIn : authedUser === null,    
   }
 }
 

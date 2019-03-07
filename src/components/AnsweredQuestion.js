@@ -5,7 +5,7 @@ import { formatQuestion, formatDate } from './shared'
 
 
 
-class Questions extends Component {
+class AnsweredQuestion extends Component {
 
     render() {
 
@@ -18,6 +18,8 @@ class Questions extends Component {
         const { 
             name, avatar,id, optionOne, timestamp,
         } = question
+
+        
 
 
         return (
@@ -35,7 +37,7 @@ class Questions extends Component {
                <div className="card-question-block2 ">
                <h4> Would you rather</h4>
                <p>...{optionOne.text}...</p>
-               <Link to={`/questions/${id}`}>
+               <Link to={`/results/${id}`}>
                <button 
                className='question-button'               
                >View Poll</button>
@@ -65,4 +67,4 @@ function mapStateToProps({authedUser, users, questions},{id}){
     }
 }
 
-export default connect(mapStateToProps)(Questions)
+export default connect(mapStateToProps)(AnsweredQuestion)

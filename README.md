@@ -101,7 +101,7 @@ This repository is the starter code for *all* Udacity students. Therefore, we mo
 
 ## About Would You Rather App
 
-This Project is a game application that accepts two questions,and users get to vote on a question and see the result of the poll from those who have voted. Users can see the polls they have answered and unanswerd polls in the homepage. Also users are able to see score determined by the number of answered votes and created votes.  
+This Project is a game application that accepts two questions,and users get to vote on a question and see the result of the poll from those who have voted. Users can see the polls they have answered and unanswerd polls in the homepage. Also users are able to see score determined by the number of answered  and created questions.  
 
 ## Installing and Launching
 

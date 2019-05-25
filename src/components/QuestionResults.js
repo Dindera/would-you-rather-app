@@ -20,10 +20,10 @@ class QuestionResult extends Component {
         } = question
 
     
-         
-        const percent1 = Math.floor(optionOne.votes.length/user.length * 100)
-        const percent2 = Math.floor(optionTwo.votes.length/user.length * 100) 
         const votesNum = optionOne.votes.length + optionTwo.votes.length
+        const percent1 = Math.floor(optionOne.votes.length/votesNum * 100)
+        const percent2 = Math.floor(optionTwo.votes.length/votesNum * 100) 
+        
 
         return (
             <div>

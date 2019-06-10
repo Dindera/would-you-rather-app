@@ -3,6 +3,8 @@ import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import {userLogin} from '../actions/login'
 
+
+
 class Nav extends Component {
 
 
@@ -30,7 +32,15 @@ class Nav extends Component {
             if(authedUser === element){
                 return users[element].name
             }
-        });
+        })
+
+        const userImg =  userName.map(element => {
+            if(authedUser === element){
+                return users[element].avatarURL
+            }
+        })
+
+        console.log(userImg)
      
         return (
             <nav className='nav'>
@@ -76,7 +86,7 @@ class Nav extends Component {
                         </NavLink>
                         </li>  
                       <li className='loginUser'>
-                            Hello, {username}
+                          Hello, {username}
                       </li>
                       <li className='nav-li'>
                         <NavLink to='/login' activeClassName='active' onClick={this.handleLogout} >

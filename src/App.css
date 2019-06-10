@@ -397,3 +397,18 @@ img {
   display: flex;
   position: relative;
 }
+
+.progress-bar {
+  position: relative;
+  height: 15px;
+  width: 80%;
+  border-radius: 50px;
+  border: 1px solid #58418c;
+}
+
+.progress-filler {
+  background: rebeccapurple;
+  height: 100%;
+  border-radius: inherit;
+  
+}

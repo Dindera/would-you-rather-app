@@ -3,14 +3,17 @@ import { connect } from 'react-redux'
 import {TiStarburst } from 'react-icons/ti/'
 import { formatQuestion } from './shared'
 import { Redirect } from 'react-router-dom'
+import { ProgressBar } from './ProgressBar';
 
 
 
 class QuestionResult extends Component {
 
 
+
+
     render() {
-        const { question, id, user, authedUser} = this.props
+        const { question, id, authedUser} = this.props
         
         if(question === null) {
             return <p> This question doesn't exist</p>
@@ -22,7 +25,9 @@ class QuestionResult extends Component {
     
         const votesNum = optionOne.votes.length + optionTwo.votes.length
         const percent1 = Math.floor(optionOne.votes.length/votesNum * 100)
-        const percent2 = Math.floor(optionTwo.votes.length/votesNum * 100) 
+        const percent2 = Math.floor(optionTwo.votes.length/votesNum * 100)
+        
+     
         
 
         return (
@@ -53,7 +58,7 @@ class QuestionResult extends Component {
             <h5> Would you rather {optionOne.text}</h5>
             {optionOne.votes.includes(authedUser)? (<TiStarburst color='yellow' className='vote-icon'/>): (<p></p>)}
             </div>
-            <span><i>{percent1}%</i></span>
+            <ProgressBar percentage={percent1}/>
             <p>{optionOne.votes.length} out of {votesNum} votes</p>
             </div>
             <div
@@ -64,7 +69,7 @@ class QuestionResult extends Component {
             <h5> Would you rather {optionTwo.text}</h5>
             {optionTwo.votes.includes(authedUser)? (<TiStarburst color='yellow' className='vote-icon'/>): (<p></p>)}
             </div>
-            <span><i>{percent2}%</i></span>
+            <ProgressBar percentage={percent2}/>
             <p>{optionTwo.votes.length} out of {votesNum} votes</p>
             </div>
             </div>

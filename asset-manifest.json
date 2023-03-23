@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/would-you-rather-app/static/css/main.26d22bad.css",
+    "main.js": "/would-you-rather-app/static/js/main.19458fcb.js",
+    "index.html": "/would-you-rather-app/index.html",
+    "main.26d22bad.css.map": "/would-you-rather-app/static/css/main.26d22bad.css.map",
+    "main.19458fcb.js.map": "/would-you-rather-app/static/js/main.19458fcb.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.26d22bad.css",
+    "static/js/main.19458fcb.js"
+  ]
+}
